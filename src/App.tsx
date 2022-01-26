@@ -16,6 +16,7 @@ function App() {
 
     if (coins.length === 0) {
       getData();
+      console.log("hello world");
     }
   }, [coins]);
 
