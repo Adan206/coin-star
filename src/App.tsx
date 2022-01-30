@@ -1,24 +1,17 @@
 import React from "react";
 import "./App.css";
+import { getCoinData, selectCoinData } from "./store/coinSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 function App() {
-  const [coins, setCoins] = React.useState([]);
+  const coins = useSelector(selectCoinData);
+  const dispatch = useDispatch();
 
   React.useEffect(() => {
-    const getData = async () => {
-      const results = await fetch(
-        "https://api.coingecko.com/api/v3/coins/markets" +
-          "?vs_currency=btc&order=market_cap_desc&per_page=100&page=1&sparkline=false"
-      ).then((response) => response.json());
-
-      setCoins(results);
-    };
-
     if (coins.length === 0) {
-      getData();
-      console.log("hello world");
+      dispatch(getCoinData());
     }
-  }, [coins]);
+  });
 
   return (
     <div className='App'>
