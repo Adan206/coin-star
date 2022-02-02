@@ -1,9 +1,9 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./Card.css";
+import "./CardCoin.css";
 import { Card, Button } from "react-bootstrap";
 
-const Cardcoin = (props: any) => {
+const CardCoin = (props: any) => {
   const { coin } = props;
   return (
     <div className='card-container'>
@@ -19,11 +19,13 @@ const Cardcoin = (props: any) => {
             Some quick example text to build on the card title and make up the
             bulk of the card's content.
           </Card.Text>
-          <Button variant='primary'>Go somewhere</Button>
+          <Button href='https://www.google.com' target='_blank'>
+            View History
+          </Button>
         </Card.Body>
       </Card>
     </div>
   );
 };
 
-export default Cardcoin;
+export default CardCoin;

@@ -2,10 +2,12 @@ import React from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col, CardGroup } from "react-bootstrap";
+import { BrowserRouter, Route } from "react-router-dom";
 import { getCoinData, selectCoinData } from "./store/coinSlice";
 import { useDispatch, useSelector } from "react-redux";
-import Cardcoin from "./Card";
+import CardCoin from "./features/CardCoin";
 import Header from "./Header";
+import CoinPage from "./pages/CoinPage";
 
 function App() {
   const coins = useSelector(selectCoinData);
@@ -19,7 +21,7 @@ function App() {
 
   return (
     <>
-      <Header></Header>
+      <Header />
       <div className='App'>
         <Container>
           <Row>
@@ -27,7 +29,7 @@ function App() {
               <CardGroup>
                 {Array.isArray(coins) &&
                   coins.map((coin: any) => {
-                    return <Cardcoin key={coin.id} coin={coin} />;
+                    return <CardCoin key={coin.id} coin={coin} />;
                   })}
               </CardGroup>
             </Col>
