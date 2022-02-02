@@ -5,6 +5,7 @@ import { Container, Row, Col, CardGroup } from "react-bootstrap";
 import { getCoinData, selectCoinData } from "./store/coinSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Cardcoin from "./Card";
+import Header from "./Header";
 
 function App() {
   const coins = useSelector(selectCoinData);
@@ -17,20 +18,23 @@ function App() {
   });
 
   return (
-    <div className='App'>
-      <Container>
-        <Row>
-          <Col>
-            <CardGroup>
-              {Array.isArray(coins) &&
-                coins.map((coin: any) => {
-                  return <Cardcoin key={coin.id} coin={coin} />;
-                })}
-            </CardGroup>
-          </Col>
-        </Row>
-      </Container>
-    </div>
+    <>
+      <Header></Header>
+      <div className='App'>
+        <Container>
+          <Row>
+            <Col>
+              <CardGroup>
+                {Array.isArray(coins) &&
+                  coins.map((coin: any) => {
+                    return <Cardcoin key={coin.id} coin={coin} />;
+                  })}
+              </CardGroup>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+    </>
   );
 }
 
