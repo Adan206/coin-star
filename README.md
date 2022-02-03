@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## 'crypto coin app'
+
+this app aims to be the crypto curreny hub for beginers and experts both
+
 ## Available Scripts
 
 In the project directory, you can run:
