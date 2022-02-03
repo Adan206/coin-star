@@ -16,8 +16,8 @@ const CardCoin = (props: any) => {
         <Card.Body>
           <Card.Title>{coin.name}</Card.Title>
           <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
+            Crypto curreny is the most popular form of non cyber currency since
+            its start in 2009
           </Card.Text>
           <Button href='https://www.google.com' target='_blank'>
             View History
