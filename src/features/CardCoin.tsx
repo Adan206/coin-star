@@ -2,6 +2,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./CardCoin.css";
 import { Card, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const CardCoin = (props: any) => {
   const { coin } = props;
