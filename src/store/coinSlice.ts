@@ -4,6 +4,7 @@ type CoinData = any;
 
 type CoinSliceInnerState = {
   coinData: CoinData[];
+  filter: string;
 };
 
 type CoinSlice = {
@@ -22,8 +23,13 @@ export const coinSlice = createSlice({
   name: "coin",
   initialState: {
     coinData: [],
+    filter: "",
   } as CoinSliceInnerState,
-  reducers: {},
+  reducers: {
+    setStringFilter: (state, action) => {
+      state.filter = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     // Add reducers for additional action types here, and handle loading state as needed
     builder.addCase(getCoinData.fulfilled, (state, action) => {
@@ -33,7 +39,7 @@ export const coinSlice = createSlice({
   },
 });
 
-// export const {} = coinSlice.actions;
+export const { setStringFilter } = coinSlice.actions;
 
 // The function below is called a thunk and allows us to perform async logic. It
 // can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This
@@ -51,5 +57,14 @@ export const coinSlice = createSlice({
 // the state. Selectors can also be defined inline where they're used instead of
 // in the slice file. For example: `useSelector((state) => state.counter.value)`
 export const selectCoinData = (state: CoinSlice) => state.coin.coinData;
+
+//filter based on coin name
+export const selectFilteredCoinData = (state: CoinSlice) =>
+  state.coin.coinData.filter((singleCoin) => {
+    if (singleCoin === state.coin.filter) {
+      return true;
+    }
+    return false;
+  });
 
 export default coinSlice.reducer;

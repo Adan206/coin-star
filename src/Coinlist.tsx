@@ -2,13 +2,12 @@ import React from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col, CardGroup } from "react-bootstrap";
-import { getCoinData, selectCoinData } from "./store/coinSlice";
+import { getCoinData, selectFilteredCoinData } from "./store/coinSlice";
 import { useDispatch, useSelector } from "react-redux";
 import CardCoin from "./features/CardCoin";
 
-
 const Coinlist = () => {
-  const coins = useSelector(selectCoinData);
+  const coins = useSelector(selectFilteredCoinData);
   const dispatch = useDispatch();
 
   React.useEffect(() => {

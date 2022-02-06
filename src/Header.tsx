@@ -1,15 +1,19 @@
 import "./Header.css";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setStringFilter } from "./store/coinSlice";
 import { Link } from "react-router-dom";
 
 const Header = () => {
-  const [searchcoin, setSearchCoin] = useState("");
+  const dispatch = useDispatch();
+  const [searchString, setSearchString] = useState("");
 
-  const submitHandler = (e: any) => {
+  const handleClick = (e: any) => {
     e.preventDefault();
 
-    if (searchcoin === "") return alert("Please enter search term!");
-    setSearchCoin(" ");
+    if (searchString === "") return alert("Please enter search term!");
+    // todo; dispatch new value
+    dispatch(setStringFilter(searchString));
   };
 
   return (
@@ -19,14 +23,14 @@ const Header = () => {
       </Link>
 
       <div className='search-bar'>
-        <form onSubmit={submitHandler}>
+        <form>
           <input
             type='text'
             // value={term}
             placeholder='Search for coins'
-            onChange={(e) => setSearchCoin(e.target.value)}
+            onChange={(e) => setSearchString(e.target.value)}
           />
-          <button type='submit'>
+          <button onClick={handleClick}>
             <i className='fa fa-search'></i>
           </button>
         </form>
