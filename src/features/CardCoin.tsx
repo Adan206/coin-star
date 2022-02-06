@@ -2,7 +2,6 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./CardCoin.css";
 import { Card, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
 
 const CardCoin = (props: any) => {
   const { coin } = props;
@@ -20,9 +19,7 @@ const CardCoin = (props: any) => {
             Crypto curreny is the most popular form of non cyber currency since
             its start in 2009
           </Card.Text>
-          <Button href='https://www.google.com' target='_blank'>
-            View History
-          </Button>
+          <Button href='/coindata'>View History</Button>
         </Card.Body>
       </Card>
     </div>
