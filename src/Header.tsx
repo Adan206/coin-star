@@ -1,12 +1,16 @@
 import "./Header.css";
-import Coinlist from "./Coinlist";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <div className='header'>
-      <div className='logo'>CoinStar</div>
+      <Link to='/'>
+        <div className='logo'>CoinStar</div>
+      </Link>
     </div>
   );
 };
 
 export default Header;
+
+/* <div className='logo'>CoinStar</div> */

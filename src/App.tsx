@@ -7,8 +7,8 @@ import CoinPage from "./pages/CoinPage";
 function App() {
   return (
     <>
-      <Header />
       <BrowserRouter>
+        <Header />
         <Routes>
           <Route path='/' element={<Coinlist />} />
           <Route path='/coindata' element={<CoinPage />} />
@@ -19,27 +19,3 @@ function App() {
 }
 
 export default App;
-
-/* {Array.isArray(coins) &&
-        coins.map((coin: any) => <p key={coin.id}> {coin.name}</p>)} */
-
-//   <Header />
-// <BrowserRouter>
-//   <div className='App'>
-//     <Container>
-//       <Row>
-//         <Col>
-//           <CardGroup>
-//             {Array.isArray(coins) &&
-//               coins.map((coin: any) => {
-//                 return <CardCoin key={coin.id} coin={coin} />;
-//               })}
-//           </CardGroup>
-//         </Col>
-//       </Row>
-//     </Container>
-//   </div>
-//   <Routes>
-//     <Route path='/coindata' element={<CoinPage />} />
-//   </Routes>
-// </BrowserRouter>
