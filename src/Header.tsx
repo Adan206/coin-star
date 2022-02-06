@@ -3,13 +3,13 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Header = () => {
-  const [coin, setCoin] = useState("");
+  const [searchcoin, setSearchCoin] = useState("");
 
   const submitHandler = (e: any) => {
-    console.log("SEARCH ME");
     e.preventDefault();
-    if (coin === "") return alert("Please enter search term!");
-    setCoin(" ");
+
+    if (searchcoin === "") return alert("Please enter search term!");
+    setSearchCoin(" ");
   };
 
   return (
@@ -24,7 +24,7 @@ const Header = () => {
             type='text'
             // value={term}
             placeholder='Search for coins'
-            onChange={(e) => setCoin(e.target.value)}
+            onChange={(e) => setSearchCoin(e.target.value)}
           />
           <button type='submit'>
             <i className='fa fa-search'></i>

@@ -6,6 +6,7 @@ import { getCoinData, selectCoinData } from "./store/coinSlice";
 import { useDispatch, useSelector } from "react-redux";
 import CardCoin from "./features/CardCoin";
 
+
 const Coinlist = () => {
   const coins = useSelector(selectCoinData);
   const dispatch = useDispatch();
