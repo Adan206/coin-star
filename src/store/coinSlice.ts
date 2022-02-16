@@ -61,7 +61,9 @@ export const selectCoinData = (state: CoinSlice) => state.coin.coinData;
 //filter based on coin name
 export const selectFilteredCoinData = (state: CoinSlice) =>
   state.coin.coinData.filter((singleCoin) => {
-    if (singleCoin === state.coin.filter) {
+    if (
+      singleCoin?.name.toLowerCase().includes(state.coin.filter.toLowerCase())
+    ) {
       return true;
     }
     return false;
