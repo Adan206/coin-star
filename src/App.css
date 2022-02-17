@@ -1,10 +1,4 @@
 .App {
-  background-image: linear-gradient(
-    to right top,
-    #101e32,
-    #322c5a,
-    #6d3074,
-    #b02276,
-    #eb1260
-  );
+  height: 100%;
+  min-height: 100%;
 }

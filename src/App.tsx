@@ -11,7 +11,7 @@ function App() {
         <Header />
         <Routes>
           <Route path='/' element={<Coinlist />} />
-          <Route path='/coindata' element={<CoinPage />} />
+          <Route path='/coin/:id' element={<CoinPage />} />
         </Routes>
       </BrowserRouter>
     </>

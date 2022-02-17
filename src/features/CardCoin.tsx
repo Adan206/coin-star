@@ -19,7 +19,7 @@ const CardCoin = (props: any) => {
             Crypto curreny is the most popular form of non cyber currency since
             its start in 2009
           </Card.Text>
-          <Button href='/coindata'>View History</Button>
+          <Button href={`/coin/${coin.id}`}>View History</Button>
         </Card.Body>
       </Card>
     </div>
