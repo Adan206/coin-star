@@ -19,7 +19,7 @@ const Coinlist = () => {
     if (allCoins.length === 0) {
       dispatch(getCoinData());
     }
-  }, [allCoins]);
+  }, [allCoins, dispatch]);
   return (
     <div className='App'>
       <Container>
