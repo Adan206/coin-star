@@ -1,7 +1,12 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { selectHistoryData } from "../store/historySlice";
+import { useSelector } from "react-redux";
+import { selectHistoryData, getHistoryData } from "../store/historySlice";
+import { useAppDispatch } from "../store/store";
+import { useNavigate } from "react-router-dom";
+import "./coinpage.css";
+// import Coinlist from "../Coinlist";
+
 import {
   XYPlot,
   XAxis,
@@ -11,11 +16,27 @@ import {
 } from "react-vis";
 
 const CoinPage = () => {
-  const dispatch = useDispatch();
-  // const { id } = useParams();
+  const dispatch = useAppDispatch();
+  const coinHistory = useSelector(selectHistoryData);
+  const { id } = useParams();
+  const navigate = useNavigate();
+
+  React.useEffect(() => {
+    if (coinHistory.length === 0 && id !== undefined) {
+      console.log({ id });
+      dispatch(getHistoryData(id));
+    } else if (id === undefined) {
+      // to do redirect
+      // not a real coin handle that
+      navigate("/Coinlist");
+    }
+  });
+  console.log(coinHistory);
   return (
-    <div>
-      <XYPlot width={300} height={300}>
+    <div className='divcenter'>
+      <h1>{id}</h1>
+
+      <XYPlot width={400} height={500}>
         <HorizontalGridLines />
         <LineSeries
           data={[

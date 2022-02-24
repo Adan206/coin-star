@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { AsyncThunk, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 type HistoryData = any;
 
@@ -10,9 +10,9 @@ type HistorySlice = {
   history: HistorySliceInnerState;
 };
 
-export const getHistoryData = createAsyncThunk(
+export const getHistoryData: AsyncThunk<any, string, {}> = createAsyncThunk(
   "history/getHistoryData",
-  async () => {
+  async (coinId) => {
     const results = await fetch(
       `https://api.coingecko.com/api/v3/coins/${coinId}/history?date=20-2-2022`
     ).then((response) => response.json());
