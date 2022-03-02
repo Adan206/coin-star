@@ -1,9 +1,8 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectHistoryData, getHistoryData } from "../store/historySlice";
 import { useAppDispatch } from "../store/store";
-import { useNavigate } from "react-router-dom";
 import "./coinpage.css";
 // import Coinlist from "../Coinlist";
 
@@ -23,18 +22,26 @@ const CoinPage = () => {
 
   React.useEffect(() => {
     if (coinHistory.length === 0 && id !== undefined) {
-      console.log({ id });
+      console.log(`this is the id ${id}`);
       dispatch(getHistoryData(id));
     } else if (id === undefined) {
       // to do redirect
       // not a real coin handle that
-      navigate("/Coinlist");
+      navigate("/");
     }
   });
   console.log(coinHistory);
   return (
     <div className='divcenter'>
-      <h1>{id}</h1>
+      <h1>{id?.toUpperCase()}</h1>
+      <button
+        onClick={() => {
+          navigate("/");
+        }}
+        style={{ width: "200px", margin: "1rem" }}
+      >
+        home
+      </button>
 
       <XYPlot width={400} height={500}>
         <HorizontalGridLines />
