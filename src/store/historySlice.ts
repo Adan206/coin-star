@@ -10,18 +10,36 @@ type HistorySlice = {
   history: HistorySliceInnerState;
 };
 
+// results are named 1 through 7 after the days of the week
 export const getHistoryData: AsyncThunk<any, string, {}> = createAsyncThunk(
   "history/getHistoryData",
   async (coinId) => {
     try {
-      const results = await fetch(
+      const currentDayNumber = new Date().getDay();
+      const dayOne = await fetch(
+        // `https://api.coingecko.com/api/v3/coins/${coinId}/history?date=${currentDayNumber}-2-2022`
         `https://api.coingecko.com/api/v3/coins/${coinId}/history?date=20-2-2022`
       ).then((response) => response.json());
-      console.log(results);
-      if (results.error) {
-        throw new Error(results.error);
+      console.log(dayOne);
+
+      if (dayOne.error) {
+        throw new Error(dayOne.error);
       }
-      if (results.error) return results;
+
+      // const dayTwo = await fetch(
+      //   `https://api.coingecko.com/api/v3/coins/${coinId}/history?date=${
+      //     currentDayNumber - 1
+      //   }-2-2022`
+      // ).then((response) => response.json());
+      // console.log(dayTwo);
+
+      // if (dayTwo.error) {
+      //   throw new Error(dayTwo.error);
+      // }
+
+      return dayOne;
+
+      // return [dayOne, dayTwo];
     } catch (error) {
       return "error";
     }

@@ -13,7 +13,6 @@ import {
   HorizontalGridLines,
   LineSeries,
 } from "react-vis";
-import { error } from "console";
 
 const CoinPage = () => {
   const dispatch = useAppDispatch();
@@ -36,12 +35,14 @@ const CoinPage = () => {
       dispatch(getHistoryData(id));
     }
   }, [coinHistory, dispatch, id, navigate]);
-  // console.log({ id });
+
+  const titleCaseId =
+    (id?.slice(0, 1) || "").toUpperCase() +
+    id?.slice(1, id.length).toLowerCase();
+
   return (
     <div className='divcenter'>
-      <h1>{id?.toUpperCase()}</h1>
-      <h2>{}</h2>
-      {/* <img src={image} alt='profileimage' /> */}
+      <h1>{titleCaseId} Market Cap Past Week</h1>
       <button
         onClick={() => {
           navigate("/");
