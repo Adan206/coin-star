@@ -13,27 +13,35 @@ import {
   HorizontalGridLines,
   LineSeries,
 } from "react-vis";
+import { error } from "console";
 
 const CoinPage = () => {
   const dispatch = useAppDispatch();
-  const coinHistory = useSelector(selectHistoryData);
   const { id } = useParams();
   const navigate = useNavigate();
 
+  // if (id === undefined) {
+  //   // return navigate("/");
+  //   return <Navigate to='/' state={{ from: location }} replace />;
+  // }
+
+  const coinHistory: any[] | "error" = useSelector(selectHistoryData(id || ""));
+
   React.useEffect(() => {
-    if (coinHistory.length === 0 && id !== undefined) {
+    console.log({ id, coinHistory });
+    if (coinHistory === "error") {
+      return navigate("/");
+    } else if (coinHistory.length === 0 && id !== undefined) {
       console.log(`this is the id ${id}`);
       dispatch(getHistoryData(id));
-    } else if (id === undefined) {
-      // to do redirect
-      // not a real coin handle that
-      navigate("/");
     }
-  });
-  console.log(coinHistory);
+  }, [coinHistory, dispatch, id, navigate]);
+  // console.log({ id });
   return (
     <div className='divcenter'>
       <h1>{id?.toUpperCase()}</h1>
+      <h2>{}</h2>
+      {/* <img src={image} alt='profileimage' /> */}
       <button
         onClick={() => {
           navigate("/");
